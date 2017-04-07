@@ -69,13 +69,11 @@
 <meta property="og:site_name" content="Sidney's Blog">
 <meta property="og:description" content="摘要：这是一篇使用GitHub Pages和Hexo搭建免费独立博客的总结。
 我在这里写下长篇大论，只希望小白们能更快速入门。一天搭建出属于自己的个人独立博客，我将会通过 安装流程主线+优质文章 作为参考。从我个人接触到成功搭建博客，走了很多弯路，网上的资料更是琳琅满目无从下手，希望通过本教程给想搭建个人博客的人一个敢于尝试的机会。我会将这篇教程写仔细，会将我出现过的问题给予解决方法。大家有问题可">
-<meta property="og:image" content="http://odbh0h495.bkt.clouddn.com/001.png">
-<meta property="og:updated_time" content="2017-04-05T15:18:05.084Z">
+<meta property="og:updated_time" content="2017-04-05T15:34:56.308Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Hexo和GitHub Pages搭建免费独立博客及域名配置">
 <meta name="twitter:description" content="摘要：这是一篇使用GitHub Pages和Hexo搭建免费独立博客的总结。
 我在这里写下长篇大论，只希望小白们能更快速入门。一天搭建出属于自己的个人独立博客，我将会通过 安装流程主线+优质文章 作为参考。从我个人接触到成功搭建博客，走了很多弯路，网上的资料更是琳琅满目无从下手，希望通过本教程给想搭建个人博客的人一个敢于尝试的机会。我会将这篇教程写仔细，会将我出现过的问题给予解决方法。大家有问题可">
-<meta name="twitter:image" content="http://odbh0h495.bkt.clouddn.com/001.png">
 
 
 
@@ -369,7 +367,7 @@
 <li>提醒你输入key的名称，你可以不用输入，直接3个回车，就OK了；</li>
 <li>在C:\Documents and Settings\Administrator\下产生两个文件：id_rsa和id_rsa.pub</li>
 <li>用记事本打开id_rsa.pub文件，复制内容，在github的网站上找到ssh密钥管理页面，添加新公钥 。</li>
-<li>在git bash中输入ssh -T git@github.com命令，出现Hi sidney001! You’ve successfully authenticated表示成功。</li>
+<li>在git bash中输入ssh -T git@github.com命令，出现Hi username! You’ve successfully authenticated表示成功。</li>
 </ol>
 </blockquote>
 <h3 id="设置用户信息"><a href="#设置用户信息" class="headerlink" title="设置用户信息"></a>设置用户信息</h3><p>现在你已经可以通过 SSH 链接到 GitHub 了，还有一些个人信息需要完善的。</p>
@@ -396,8 +394,8 @@
 </ul>
 <p>如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。打开git bash执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure></p>
 <p>这样hexo就已经安装好了。</p>
-<h2 id="使用hexo建站"><a href="#使用hexo建站" class="headerlink" title="使用hexo建站"></a>使用hexo建站</h2><p>安装完后，在你喜欢的文件夹内（我的是根目录）（例如H：\），点击鼠标右键选择Git bash，输入以下指令（填自己的地址）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone git@github.com:sidney001/sidney001.github.io.git</div></pre></td></tr></table></figure></p>
-<p><img src="http://odbh0h495.bkt.clouddn.com/001.png" alt="002.png"><br>该命令会把你的博客仓库同步下来，然后cd到你的仓库文件夹下面依次执行以下命令：</p>
+<h2 id="使用hexo建站"><a href="#使用hexo建站" class="headerlink" title="使用hexo建站"></a>使用hexo建站</h2><p>安装完后，在你喜欢的文件夹内（我的是根目录）（例如H：\），点击鼠标右键选择Git bash，输入以下指令（填自己的地址）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone git@github.com:username/username.github.io.git</div></pre></td></tr></table></figure></p>
+<p>该命令会把你的博客仓库同步下来，然后cd到你的仓库文件夹下面依次执行以下命令：</p>
 <blockquote>
 <p>1、$ hexo init</p>
 </blockquote>
@@ -414,31 +412,31 @@
 <li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo 官方文档</a></li>
 </ul>
 <h2 id="部署博客到GitHub上"><a href="#部署博客到GitHub上" class="headerlink" title="部署博客到GitHub上"></a>部署博客到GitHub上</h2><p>部署其实很简单，只要改一下配置文件，执行几条命令就行了，为了以后的方便，现在麻烦了一点，大家跟着做就行了，具体原因也在配置管理与优化里有讲到。</p>
-<h3 id="配置站点文件"><a href="#配置站点文件" class="headerlink" title="配置站点文件"></a>配置站点文件</h3><p>我们继续使用上面的文件夹H:\sidney001.github.io（也可以新建一个文件夹重新生成），然后编辑该文件夹下的_config.yml（这是站点配置文件）<br>默认生成的_config.yml：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Deployment </div><div class="line">## Docs: http://hexo.io/docs/deployment.html </div><div class="line">deploy:   </div><div class="line">  type:</div></pre></td></tr></table></figure></p>
-<p>修改后的_config.yml：（也是填入自己的ssh地址）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository: git@github.com:sidney001/sidney001.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
+<h3 id="配置站点文件"><a href="#配置站点文件" class="headerlink" title="配置站点文件"></a>配置站点文件</h3><p>我们继续使用上面的文件夹H:\username.github.io（也可以新建一个文件夹重新生成），然后编辑该文件夹下的_config.yml（这是站点配置文件）<br>默认生成的_config.yml：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Deployment </div><div class="line">## Docs: http://hexo.io/docs/deployment.html </div><div class="line">deploy:   </div><div class="line">  type:</div></pre></td></tr></table></figure></p>
+<p>修改后的_config.yml：（也是填入自己的ssh地址）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository: git@github.com:username/username.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
 <p>这里解释一下前面为什么建立两个分支master和hexo，为了管理方便，以后master分支用来发布网站（一会再说怎么发布），hexo分支用来存放Hexo网站文件。</p>
 <h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p>为了能够使Hexo部署到GitHub上，需要安装一个插件：（在项目目录下执行命令）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
 <p>然后，执行下列指令即可完成部署：（以后发布也按照这三条命令执行）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean #清空public文件夹下生成的静态文件和db.json文件</div><div class="line">$ hexo generate #重新生成静态文件和db.json</div><div class="line">$ hexo deploy #按照站点配置文件部署到github上</div></pre></td></tr></table></figure></p>
 <p>之后，可以通过在浏览器键入：username.github.io进行浏览，开心吧~</p>
-<h3 id="提交Hexo网站文件到hexo分支"><a href="#提交Hexo网站文件到hexo分支" class="headerlink" title="提交Hexo网站文件到hexo分支"></a>提交Hexo网站文件到hexo分支</h3><p>由于上面执行了hexo init命令，所以要重新关联远端库<br>首先在项目文件夹下执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git init #初始化为一个git目录</div><div class="line">$ git remote add origin git@github.com:sidney001/sidney001.github.io.git #使用你自己的地址关联</div><div class="line">$ git pull #pull一下你的远端库</div></pre></td></tr></table></figure></p>
-<p>此时你应该在hexo分支下，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ H:\sidney001.github.io (hexo) (hexo-site@0.0.0)</div></pre></td></tr></table></figure></p>
+<h3 id="提交Hexo网站文件到hexo分支"><a href="#提交Hexo网站文件到hexo分支" class="headerlink" title="提交Hexo网站文件到hexo分支"></a>提交Hexo网站文件到hexo分支</h3><p>由于上面执行了hexo init命令，所以要重新关联远端库<br>首先在项目文件夹下执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git init #初始化为一个git目录</div><div class="line">$ git remote add origin git@github.com:username/username.github.io.git #使用你自己的地址关联</div><div class="line">$ git pull #pull一下你的远端库</div></pre></td></tr></table></figure></p>
+<p>此时你应该在hexo分支下，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ H:\username.github.io (hexo) (hexo-site@0.0.0)</div></pre></td></tr></table></figure></p>
 <p>如果不是，执行以下命令切换到hexo分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git checkout hexo</div></pre></td></tr></table></figure></p>
 <p>然后执行以下命令提交网站相关文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git add . #添加所有文件到暂存区</div><div class="line">$ git commit -m &quot;提交信息&quot;     #提交到本地仓库</div><div class="line">$ git push origin hexo  #把本地库push到远端库的hexo分支</div></pre></td></tr></table></figure></p>
-<p>提交后去github上查看是否成功，这是我的<a href="https://github.com/sidney001/sidney001.github.io" target="_blank" rel="external">github地址</a>，看看是否一样。</p>
-<h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><p>我使用的是<a href="">next主题</a>，大家喜欢也可以去我的<a href="https://github.com/sidney001/sidney001.github.io" target="_blank" rel="external">github</a>上fork一下，然后在这基础上修改，大家也可以找自己喜欢的主题来换。<br>如果想要使用其他主题，可以使用git clone将别人的主题拷贝到H:\sidney001.github.io\themes下，然后将_config.yml中的theme: landscape改为对应的主题名字。<br>下面以切换next主题为例来讲一下具体如何操作，同样也是在项目文件夹下执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git clone https://github.com/iissnan/hexo-theme-next.git themes/next</div></pre></td></tr></table></figure></p>
+<p>提交后去github上查看是否成功，这是我的<a href="https://github.com/username/username.github.io" target="_blank" rel="external">github地址</a>，看看是否一样。</p>
+<h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><p>我使用的是<a href="">next主题</a>，大家喜欢也可以去我的<a href="https://github.com/username/username.github.io" target="_blank" rel="external">github</a>上fork一下，然后在这基础上修改，大家也可以找自己喜欢的主题来换。<br>如果想要使用其他主题，可以使用git clone将别人的主题拷贝到H:\username.github.io\themes下，然后将_config.yml中的theme: landscape改为对应的主题名字。<br>下面以切换next主题为例来讲一下具体如何操作，同样也是在项目文件夹下执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git clone https://github.com/iissnan/hexo-theme-next.git themes/next</div></pre></td></tr></table></figure></p>
 <p>然后在站点配置文件_config.yml中的theme: landscape改为theme: next，重新发布一下就完成了。</p>
 <h3 id="相关资料-1"><a href="#相关资料-1" class="headerlink" title="相关资料"></a>相关资料</h3><ul>
 <li><a href="http://theme-next.iissnan.com/" target="_blank" rel="external">next主题使用文档</a></li>
 </ul>
 <h1 id="优化部署与管理"><a href="#优化部署与管理" class="headerlink" title="优化部署与管理"></a>优化部署与管理</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Hexo部署到GitHub上的文件，是.md（你的博文）转化之后的.html（静态网页）。因此，当你重装电脑或者想在不同电脑上修改博客时，就不可能了（除非你自己写html）。<br>其实，Hexo生成的网站文件中有.gitignore文件，因此它的本意也是想我们将Hexo生成的网站文件存放到GitHub上进行管理的（而不是用U盘或者云备份啦。）这样，不仅解决了上述的问题，还可以通过git的版本控制追踪你的博文的修改过程，是极赞的。<br>但是，如果每一个GitHub Pages都需要创建一个额外的仓库来存放Hexo网站文件，我感觉很麻烦（10个项目需要20个仓库）。<br>所以，我利用了分支！！！<br>简单地说，每个想建立GitHub Pages的仓库，起码有两个分支，一个用来存放Hexo网站的文件，一个用来发布网站。<br>下面以我的博客作为例子详细地讲述。</p>
 <h3 id="我的博客搭建流程"><a href="#我的博客搭建流程" class="headerlink" title="我的博客搭建流程"></a>我的博客搭建流程</h3><blockquote>
-<p>1、创建仓库，sidney001.github.io；<br>2、创建两个分支：master 与 hexo；<br>3、设置hexo为默认分支（因为我们只需要手动管理这个分支上的Hexo网站文件）；<br>4、使用git clone git@github.com:sidney001/sidney001.github.io.git拷贝仓库；<br>5、在本地sidney001.github.io文件夹下通过Git bash依次执行npm install hexo-cli、hexo init、npm install 和 npm install hexo-deployer-git（此时当前分支应显示为hexo）;<br>6、修改_config.yml中的deploy参数，分支应为master；<br>7、使用git init 、<br>git remote add origin git@github.com:sidney001/sidney001.github.io.git以及git pull命令重新关联远端库。<br>8、使用git checkout hexo命令切换到hexo分支然后依次执行git add .、git commit -m “…”、git push origin hexo提交网站相关的文件；<br>9、执行hexo generate -d生成网站并部署到GitHub上。</p>
+<p>1、创建仓库，username.github.io；<br>2、创建两个分支：master 与 hexo；<br>3、设置hexo为默认分支（因为我们只需要手动管理这个分支上的Hexo网站文件）；<br>4、使用git clone git@github.com:username/username.github.io.git拷贝仓库；<br>5、在本地username.github.io文件夹下通过Git bash依次执行npm install hexo-cli、hexo init、npm install 和 npm install hexo-deployer-git（此时当前分支应显示为hexo）;<br>6、修改_config.yml中的deploy参数，分支应为master；<br>7、使用git init 、<br>git remote add origin git@github.com:username/username.github.io.git以及git pull命令重新关联远端库。<br>8、使用git checkout hexo命令切换到hexo分支然后依次执行git add .、git commit -m “…”、git push origin hexo提交网站相关的文件；<br>9、执行hexo generate -d生成网站并部署到GitHub上。</p>
 </blockquote>
-<p>这样一来，在GitHub上的sidney001.github.io仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。完美！</p>
+<p>这样一来，在GitHub上的username.github.io仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。完美！</p>
 <h2 id="我的博客管理流程"><a href="#我的博客管理流程" class="headerlink" title="我的博客管理流程"></a>我的博客管理流程</h2><h3 id="日常修改"><a href="#日常修改" class="headerlink" title="日常修改"></a>日常修改</h3><p>在本地对博客进行修改（添加新博文、修改样式等等）后，通过下面的流程进行管理：<br>依次执行git add .、git commit -m “…”、git push origin hexo指令将改动推送到GitHub（此时当前分支应为hexo）；<br>然后才执行hexo generate -d发布网站到master分支上。<br>虽然两个过程顺序调转一般不会有问题，不过逻辑上这样的顺序是绝对没问题的（例如突然死机要重装了，悲催….的情况，调转顺序就有问题了）。</p>
 <h3 id="本地资料丢失"><a href="#本地资料丢失" class="headerlink" title="本地资料丢失"></a>本地资料丢失</h3><p>当重装电脑之后，或者想在其他电脑上修改博客，可以使用下列步骤：</p>
 <blockquote>
-<p>1、使用git clone git@github.com:sidney001/sidney001.github.io.git拷贝仓库（默认分支为hexo）；<br>2、在本地新拷贝的sidney001.github.io文件夹下通过Git bash依次执行下列指令：npm install hexo-cli、npm install、npm install hexo-deployer-git（记得，不需要hexo init这条指令）。</p>
+<p>1、使用git clone git@github.com:username/username.github.io.git拷贝仓库（默认分支为hexo）；<br>2、在本地新拷贝的username.github.io文件夹下通过Git bash依次执行下列指令：npm install hexo-cli、npm install、npm install hexo-deployer-git（记得，不需要hexo init这条指令）。</p>
 </blockquote>
 <h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>在网上看了很多资料，总结了很多资料，好累(-.-)</p>
 
