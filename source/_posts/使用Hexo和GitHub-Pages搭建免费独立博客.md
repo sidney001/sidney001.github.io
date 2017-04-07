@@ -1,5 +1,5 @@
 ---
-title: 使用Hexo和GitHub Pages搭建免费独立博客
+title: 使用Hexo和GitHub Pages搭建免费独立博客及域名配置
 date: 2016-11-11 16:31:52
 categories:
 	- hexo
@@ -14,8 +14,6 @@ tags:
 
 我在这里写下长篇大论，只希望小白们能更快速入门。一天搭建出属于自己的个人独立博客，我将会通过 安装流程主线+优质文章 作为参考。从我个人接触到成功搭建博客，走了很多弯路，网上的资料更是琳琅满目无从下手，希望通过本教程给想搭建个人博客的人一个敢于尝试的机会。我会将这篇教程写仔细，会将我出现过的问题给予解决方法。大家有问题可以留言，我会尽量帮助大家解决。
 
-先给大家预览一下我的博客的最终版，这是我的预览地址[https://sylujia.github.io/](https://sylujia.github.io/)
-![001.png](http://odbh0h495.bkt.clouddn.com/show.png)
 
 
 
@@ -26,7 +24,7 @@ tags:
 * 学着用github，享受github的便利，上面有很多大牛，眼界会开阔很多；
 * 顺便看看github工作原理，最好的团队协作流程；
 * github是趋势；
-* 就算github被墙了，我可以搬到国内的gitcafe中去。
+
 
 <!--more-->
 
@@ -59,7 +57,7 @@ git安装好以后执行以下步骤：
 3. 提醒你输入key的名称，你可以不用输入，直接3个回车，就OK了；
 4. 在C:\Documents and Settings\Administrator\下产生两个文件：id_rsa和id_rsa.pub
 5. 用记事本打开id_rsa.pub文件，复制内容，在github的网站上找到ssh密钥管理页面，添加新公钥 。
-6. 在git bash中输入ssh -T git@github.com命令，出现Hi sylujia! You've successfully authenticated表示成功。
+6. 在git bash中输入ssh -T git@github.com命令，出现Hi username! You've successfully authenticated表示成功。
 
 ### 设置用户信息
 
@@ -67,8 +65,8 @@ git安装好以后执行以下步骤：
 
 Git 会根据用户的名字和邮箱来记录提交。GitHub 也是用这些信息来做权限的处理，输入下面的代码进行个人信息的设置，把名称和邮箱替换成你自己的，名字必须是你的真名，而不是GitHub的昵称。
 ```
-$ git config --global user.name "aierui"//用户名
-$ git config --global user.email "imland@outlook.com"//填写自己的邮箱
+$ git config --global user.name "***"//用户名
+$ git config --global user.email "****@****.com"//填写自己的邮箱
 ```
 
 # 开始搭建
@@ -110,9 +108,9 @@ $ npm install -g hexo-cli
 
 安装完后，在你喜欢的文件夹内（我的是根目录）（例如H：\），点击鼠标右键选择Git bash，输入以下指令（填自己的地址）：
 ``` 
-git clone git@github.com:sylujia/sylujia.github.io.git 
+git clone git@github.com:username/username.github.io.git 
 ```
-![002.png](http://odbh0h495.bkt.clouddn.com/001.png)
+
 该命令会把你的博客仓库同步下来，然后cd到你的仓库文件夹下面依次执行以下命令：
 > 1、$ hexo init
 
@@ -121,7 +119,7 @@ git clone git@github.com:sylujia/sylujia.github.io.git
 
 这样，我们就已经搭建起本地的Hexo博客了。可以先执行以下命令（在对应文件夹下），然后再浏览器输入localhost:4000查看。
 > 3、$ hexo generate
-4、$ hexo server
+> 4、$ hexo server
 
 这个博客只是本地的，别人是浏览不了的，之后需要部署到GitHub上。
 
@@ -135,7 +133,7 @@ git clone git@github.com:sylujia/sylujia.github.io.git
 
 ### 配置站点文件
 
-我们继续使用上面的文件夹H:\sylujia.github.io（也可以新建一个文件夹重新生成），然后编辑该文件夹下的_config.yml（这是站点配置文件）
+我们继续使用上面的文件夹H:\username.github.io（也可以新建一个文件夹重新生成），然后编辑该文件夹下的_config.yml（这是站点配置文件）
 默认生成的_config.yml：
 ``` 
 # Deployment 
@@ -147,7 +145,7 @@ deploy:
 ``` 
 deploy:
   type: git
-  repository: git@github.com:sylujia/sylujia.github.io.git
+  repository: git@github.com:username/username.github.io.git
   branch: master
 ```
 这里解释一下前面为什么建立两个分支master和hexo，为了管理方便，以后master分支用来发布网站（一会再说怎么发布），hexo分支用来存放Hexo网站文件。
@@ -170,12 +168,12 @@ $ hexo deploy #按照站点配置文件部署到github上
 首先在项目文件夹下执行以下命令：
 ``` 
 $ git init #初始化为一个git目录
-$ git remote add origin git@github.com:sylujia/sylujia.github.io.git #使用你自己的地址关联
+$ git remote add origin git@github.com:username/username.github.io.git #使用你自己的地址关联
 $ git pull #pull一下你的远端库
 ```
 此时你应该在hexo分支下，如下：
 ``` 
-$ H:\sylujia.github.io (hexo) (hexo-site@0.0.0)
+$ H:\username.github.io (hexo) (hexo-site@0.0.0)
 ```
 如果不是，执行以下命令切换到hexo分支：
 ``` 
@@ -187,11 +185,11 @@ $ git add . #添加所有文件到暂存区
 $ git commit -m "提交信息"     #提交到本地仓库
 $ git push origin hexo  #把本地库push到远端库的hexo分支
 ```
-提交后去github上查看是否成功，这是我的[github地址](https://github.com/sylujia/sylujia.github.io)，看看是否一样。
+提交后去github上查看是否成功，这是我的[github地址](https://github.com/username/username.github.io)，看看是否一样。
 ## 更换主题
 
-我使用的是[next主题]()，大家喜欢也可以去我的[github](https://github.com/sylujia/sylujia.github.io)上fork一下，然后在这基础上修改，大家也可以找自己喜欢的主题来换。
-如果想要使用其他主题，可以使用git clone将别人的主题拷贝到H:\sylujia.github.io\themes下，然后将_config.yml中的theme: landscape改为对应的主题名字。
+我使用的是[next主题]()，大家喜欢也可以去我的[github](https://github.com/username/username.github.io)上fork一下，然后在这基础上修改，大家也可以找自己喜欢的主题来换。
+如果想要使用其他主题，可以使用git clone将别人的主题拷贝到H:\username.github.io\themes下，然后将_config.yml中的theme: landscape改为对应的主题名字。
 下面以切换next主题为例来讲一下具体如何操作，同样也是在项目文件夹下执行以下命令：
 ```
 $ git clone https://github.com/iissnan/hexo-theme-next.git themes/next
@@ -210,19 +208,19 @@ Hexo部署到GitHub上的文件，是.md（你的博文）转化之后的.html�
 简单地说，每个想建立GitHub Pages的仓库，起码有两个分支，一个用来存放Hexo网站的文件，一个用来发布网站。
 下面以我的博客作为例子详细地讲述。
 ### 我的博客搭建流程
-> 1、创建仓库，sylujia.github.io；
+> 1、创建仓库，username.github.io；
 2、创建两个分支：master 与 hexo；
 3、设置hexo为默认分支（因为我们只需要手动管理这个分支上的Hexo网站文件）；
-4、使用git clone git@github.com:sylujia/sylujia.github.io.git拷贝仓库；
-5、在本地sylujia.github.io文件夹下通过Git bash依次执行npm install hexo-cli、hexo init、npm install 和 npm install hexo-deployer-git（此时当前分支应显示为hexo）;
+4、使用git clone git@github.com:username/username.github.io.git拷贝仓库；
+5、在本地username.github.io文件夹下通过Git bash依次执行npm install hexo-cli、hexo init、npm install 和 npm install hexo-deployer-git（此时当前分支应显示为hexo）;
 6、修改_config.yml中的deploy参数，分支应为master；
 7、使用git init 、
-git remote add origin git@github.com:sylujia/sylujia.github.io.git以及git pull命令重新关联远端库。
+git remote add origin git@github.com:username/username.github.io.git以及git pull命令重新关联远端库。
 8、使用git checkout hexo命令切换到hexo分支然后依次执行git add .、git commit -m “…”、git push origin hexo提交网站相关的文件；
 9、执行hexo generate -d生成网站并部署到GitHub上。
 
 
-这样一来，在GitHub上的sylujia.github.io仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。完美！
+这样一来，在GitHub上的username.github.io仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。完美！
 ## 我的博客管理流程
 ### 日常修改
 在本地对博客进行修改（添加新博文、修改样式等等）后，通过下面的流程进行管理：
@@ -231,8 +229,8 @@ git remote add origin git@github.com:sylujia/sylujia.github.io.git以及git pull
 虽然两个过程顺序调转一般不会有问题，不过逻辑上这样的顺序是绝对没问题的（例如突然死机要重装了，悲催….的情况，调转顺序就有问题了）。
 ### 本地资料丢失
 当重装电脑之后，或者想在其他电脑上修改博客，可以使用下列步骤：
-> 1、使用git clone git@github.com:sylujia/sylujia.github.io.git拷贝仓库（默认分支为hexo）；
-2、在本地新拷贝的sylujia.github.io文件夹下通过Git bash依次执行下列指令：npm install hexo-cli、npm install、npm install hexo-deployer-git（记得，不需要hexo init这条指令）。
+> 1、使用git clone git@github.com:username/username.github.io.git拷贝仓库（默认分支为hexo）；
+2、在本地新拷贝的username.github.io文件夹下通过Git bash依次执行下列指令：npm install hexo-cli、npm install、npm install hexo-deployer-git（记得，不需要hexo init这条指令）。
 
 # 结尾
 在网上看了很多资料，总结了很多资料，好累(-.-)
