@@ -232,5 +232,21 @@ git remote add origin git@github.com:username/username.github.io.git以及git pu
 > 1、使用git clone git@github.com:username/username.github.io.git拷贝仓库（默认分支为hexo）；
 2、在本地新拷贝的username.github.io文件夹下通过Git bash依次执行下列指令：npm install hexo-cli、npm install、npm install hexo-deployer-git（记得，不需要hexo init这条指令）。
 
+# 购买域名及配置
+## 综述
+因为Hexo个人博客是托管在github之上，每次访问都要使用githubname.github.io这么一个长串的域名来访问，会显得非常繁琐。这个时候我们可以购买一个域名，设置DNS跳转，以达到通过域名即可访问我们的个人博客。通过查阅文档发现，github pages是支持域名绑定的。
+## 购买域名
+国内国外有很多的域名供应商，选择一个好的机构购买域名，会为自己的站点配置节约很多时间，也不会因为域名的出错，导致影响百度对我们个人博客的收录。近几年来，国内做的比较好的域名供应商有阿里的万网。我就是在阿里的[万网](https://wanwang.aliyun.com/)购买的域名。通过查找，找到自己喜欢的域名，后来为了解决成本，我选了.top结尾的域名，一年只需要4块钱，很便宜。
+## 域名配置
+### DNS地址解析
+修改域名的 DNS 地址为 f1g1ns1.dnspod.net 和 f1g1ns2.dnspod.net 
+### 域名解析
+登录进入万网的域名控制台，点击"域名和网站"中的"云DNS"，点击对应域名的"解析"。
+点击添加解析，记录类型选A或CNAME，A记录的记录值就是ip地址，github(官方文档)提供了两个IP地址，192.30.252.153和192.30.252.154，这两个IP地址为github的服务器地址，两个都要填上，解析记录设置两个www和@，线路就默认就行了（或ping自己的xx.github.io），CNAME记录值填你的github博客网址。如我的是sidney001.github.io。
+
+这些全部设置完成后，此时你并不能要申请的域名访问你的博客。接着你需要做的是在hexo根目录的source文件夹里创建CNAME文件，不带任何后缀，里面添加你的域名信息，如：sidney001.top。实践证明用www.sidney001.top和sidney001.top访问都是可以的。重新清理hexo,并发布即可用新的域名访问。
+
 # 结尾
 在网上看了很多资料，总结了很多资料，好累(-.-)
+
+
