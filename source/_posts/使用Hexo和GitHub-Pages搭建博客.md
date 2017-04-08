@@ -217,16 +217,27 @@ Hexo部署到GitHub上的文件，是.md（你的博文）转化之后的.html�
 7、使用git init 、
 git remote add origin git@github.com:username/username.github.io.git以及git pull命令重新关联远端库。
 8、使用git checkout hexo命令切换到hexo分支然后依次执行git add .、git commit -m “…”、git push origin hexo提交网站相关的文件；
-9、执行hexo generate -d生成网站并部署到GitHub上。
+9、执行hexo g、 hexo d生成网站并部署到GitHub上。
 
-
+### shell脚本自动化
+开启 Hexo 的本地服务或者提交到github pages这些都是一些终端里的 Hexo 命令，所以笔者写了一些 shell 脚本，来简化这些操作。所以基本就是用 hey 可视化写文章，写好了之后，然后点击 一键部署 的 shell 脚本，然后就自动发布了（当然这也纯属鸡助，看个人。）。由于 shell 脚本比较简单，在此插入一个一键部署的shell脚本代码。
+```
+#!/bin/sh
+cd /your/path 
+hexo clean
+hexo g
+hexo d
+git add .
+git commit -m "modified"
+git push origin hexo
+```
 这样一来，在GitHub上的username.github.io仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。完美！
 ## 我的博客管理流程
 ### 日常修改
 在本地对博客进行修改（添加新博文、修改样式等等）后，通过下面的流程进行管理：
 依次执行git add .、git commit -m “…”、git push origin hexo指令将改动推送到GitHub（此时当前分支应为hexo）；
 然后才执行hexo generate -d发布网站到master分支上。
-虽然两个过程顺序调转一般不会有问题，不过逻辑上这样的顺序是绝对没问题的（例如突然死机要重装了，悲催….的情况，调转顺序就有问题了）。
+。
 ### 本地资料丢失
 当重装电脑之后，或者想在其他电脑上修改博客，可以使用下列步骤：
 > 1、使用git clone git@github.com:username/username.github.io.git拷贝仓库（默认分支为hexo）；
@@ -238,13 +249,25 @@ git remote add origin git@github.com:username/username.github.io.git以及git pu
 ## 购买域名
 国内国外有很多的域名供应商，选择一个好的机构购买域名，会为自己的站点配置节约很多时间，也不会因为域名的出错，导致影响百度对我们个人博客的收录。近几年来，国内做的比较好的域名供应商有阿里的万网。我就是在阿里的[万网](https://wanwang.aliyun.com/)购买的域名。通过查找，找到自己喜欢的域名，后来为了解决成本，我选了.top结尾的域名，一年只需要4块钱，很便宜。
 ## 域名配置
-### DNS地址解析
-修改域名的 DNS 地址为 f1g1ns1.dnspod.net 和 f1g1ns2.dnspod.net 
+~~### DNS地址解析
+修改域名的 DNS 地址为 f1g1ns1.dnspod.net 和 f1g1ns2.dnspod.net~~ 
 ### 域名解析
-登录进入万网的域名控制台，点击"域名和网站"中的"云DNS"，点击对应域名的"解析"。
+~~登录进入万网的域名控制台，点击"域名和网站"中的"云DNS"，点击对应域名的"解析"。
 点击添加解析，记录类型选A或CNAME，A记录的记录值就是ip地址，github(官方文档)提供了两个IP地址，192.30.252.153和192.30.252.154，这两个IP地址为github的服务器地址，两个都要填上，解析记录设置两个www和@，线路就默认就行了（或ping自己的xx.github.io），CNAME记录值填你的github博客网址。如我的是sidney001.github.io。
+这些全部设置完成后，此时你并不能要申请的域名访问你的博客。接着你需要做的是在hexo根目录的source文件夹里创建CNAME文件，不带任何后缀，里面添加你的域名信息，如：sidney001.top。实践证明用www.sidney001.top和sidney001.top访问都是可以的。重新清理hexo,并发布即可用新的域名访问。~~
 
-这些全部设置完成后，此时你并不能要申请的域名访问你的博客。接着你需要做的是在hexo根目录的source文件夹里创建CNAME文件，不带任何后缀，里面添加你的域名信息，如：sidney001.top。实践证明用www.sidney001.top和sidney001.top访问都是可以的。重新清理hexo,并发布即可用新的域名访问。
+在阿里云管理控制台中,选择中刚刚购买的域名,点击解析按钮
+这时会提醒你选择解析到阿里云主机,或者其他主机,这时需要将你在GitHub上创建的GitHub Pages的域名 xxx.github.io进行查询,得到一个IP地址。
+
+从ping指令得到一个IP地址 151.101.100.133, 将这个IP地址记录下来
+进入万网【域名控制台】》【域名解析】标签,选择【解析设置】,
+点击【添加设置】,添加一个记录类型为A,主机记录为www,解析线路默认,记录值为151.101.100.133的记录
+点击【添加设置】,再添加一个记录类型为A,主机记录为@,解析线路默认,记录值为151.101.100.133的记录。
+### Github 解析
+在GitHub的xxx.github.io项目,进入【Settings】标签页,在【Custom domain】功能中,将刚刚申请的域名写进去。
+
+GitHub设置完成,等几分钟,在浏览器输入刚刚购买的域名,就可以看到刚刚GitHub上的网站了!
+
 
 # 结尾
 在网上看了很多资料，总结了很多资料，好累(-.-)
