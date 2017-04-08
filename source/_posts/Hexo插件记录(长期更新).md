@@ -7,10 +7,10 @@ tags:
 	- hexo
 	- blog
 ---
-### 1.使用**本地图片**
+# 1.使用**本地图片**
  hexo 中使用本地图片是件非常让人纠结的事情，在 markdown 里的图片地址似乎永远无法和最后生成的网页保持一致。解决方案：
 [hexo-asset-image](https://github.com/CodeFalling/hexo-asset-image)
-#### 使用：
+## 使用：
 首先确认 `_config.yml` 中有 `post_asset_folder:true` 。
 在 hexo 目录，执行
 `npm install https://github.com/CodeFalling/hexo-asset-image --save`
