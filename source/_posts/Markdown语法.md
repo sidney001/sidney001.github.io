@@ -1,6 +1,7 @@
 ---
 title: Markdown语法
 date: 2016-11-17 16:50:03
+comments: true
 categories:
 	- 其它
 tags: 

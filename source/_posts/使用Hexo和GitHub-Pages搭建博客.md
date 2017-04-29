@@ -1,6 +1,7 @@
 ---
 title: 使用Hexo和GitHub Pages搭建免费独立博客及域名配置
 date: 2016-11-11 16:31:52
+toc: true 
 categories:
 	- hexo
 tags:

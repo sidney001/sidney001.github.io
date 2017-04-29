@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Sidney's Blog 
-subtitle:
+title: Sidney001's Blog 
+subtitle: 心有猛虎 细嗅蔷薇
 description: 心有猛虎 细嗅蔷薇
-author: Sidney
+author: Sidney001
 language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://sidney001.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -64,6 +64,20 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: maupassant
+
+# Disqus
+#disqus_shortname: sidney001
+
+# Extensions
+## Plugins: http://hexo.io/plugins/
+#RSS订阅
+# plugin:
+# - hexo-generator-feed
+# #Feed Atom
+# feed:
+# type: atom
+# path: atom.xml
+# limit: 20
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
