@@ -3,46 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[LeetCode/LintCode刷题之排序]]></title>
-      <url>/2017/03/17/LeetCodeLintCode%E5%88%B7%E9%A2%98%E4%B9%8B%E6%8E%92%E5%BA%8F/</url>
-      <content type="html"><![CDATA[<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="Merge-Sorted-Array"><a href="#Merge-Sorted-Array" class="headerlink" title="Merge Sorted Array"></a>Merge Sorted Array</h2><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><ul>
-<li>leetcode: <a href="https://leetcode.com/problems/merge-sorted-array/" target="_blank" rel="external">Merge Sorted Array | LeetCode OJ</a></li>
-<li>lintcode: <a href="http://www.lintcode.com/en/problem/merge-sorted-array/" target="_blank" rel="external">(6) Merge Sorted Array</a></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Given two sorted integer arrays A and B, merge B into A as one sorted array.</div><div class="line"></div><div class="line">Example</div><div class="line">A = [1, 2, 3, empty, empty], B = [4, 5]</div><div class="line"></div><div class="line">After merge, A will be filled as [1, 2, 3, 4, 5]</div><div class="line"></div><div class="line">Note</div><div class="line">You may assume that A has enough space (size that is greater or equal to m + n)</div><div class="line">to hold additional elements from B.</div><div class="line">The number of elements initialized in A and B are m and n respectively.</div></pre></td></tr></table></figure>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>因为本题有 in-place 的限制，故必须从数组末尾的两个元素开始比较；否则就会产生挪动，一旦挪动就会是 $O(n^2)$ 的。<br>自尾部向首部逐个比较两个数组内的元素，取较大的置于数组 A 中。由于 A 的容量较 B 大，故最后 <code>m == 0</code> 或者 <code>n == 0</code> 时仅需处理 B 中的元素，因为 A 中的元素已经在 A 中，无需处理。</p>
-<h3 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; B, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> index = m + n - <span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span> (m &gt; <span class="number">0</span> &amp;&amp; n &gt; <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (A[m - <span class="number">1</span>] &gt; B[n - <span class="number">1</span>]) &#123;</div><div class="line">                A[index] = A[m - <span class="number">1</span>];</div><div class="line">                --m;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">            A[index] = B[n - <span class="number">1</span>];</div><div class="line">            --n;</div><div class="line">            &#125;</div><div class="line">        --index;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 如果B非空，因为A中的元素已经在A中，m==0时，A中元素位置已调整好，B中元素不定</span></div><div class="line">        <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</div><div class="line">            A[index] = B[n - <span class="number">1</span>];</div><div class="line">            --n;</div><div class="line">            --index;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>最坏情况下需要遍历两个数组中所有元素，时间复杂度为 $O(m+n)$. 空间复杂度 $O(1)$.</p>
-<h2 id="Merge-Two-Sorted-Lists"><a href="#Merge-Two-Sorted-Lists" class="headerlink" title="Merge Two Sorted Lists"></a>Merge Two Sorted Lists</h2><h2 id="Question-1"><a href="#Question-1" class="headerlink" title="Question"></a>Question</h2><ul>
-<li>leetcode: <a href="https://leetcode.com/problems/merge-two-sorted-lists/" target="_blank" rel="external">Merge Two Sorted Lists | LeetCode OJ</a></li>
-<li>lintcode: <a href="http://www.lintcode.com/en/problem/merge-two-sorted-lists/" target="_blank" rel="external">(165) Merge Two Sorted Lists</a></li>
-</ul>
-<h3 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h3><p>Merge two sorted (ascending) linked lists and return it as a new sorted list.<br>The new sorted list should be made by splicing together the nodes of the two<br>lists and sorted in ascending order.</p>
-<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p>Given <code>1-&gt;3-&gt;8-&gt;11-&gt;15-&gt;null</code>, <code>2-&gt;null</code> , return <code>1-&gt;2-&gt;3-&gt;8-&gt;11-&gt;15-&gt;null</code>.</p>
-<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>此题为两个链表的合并，合并后的表头节点不一定，故应联想到使用<code>dummy</code>节点。链表节点的插入主要涉及节点<code>next</code>指针值的改变，两个链表的合并操作则涉及到两个节点的<code>next</code>值变化，若每次合并一个节点都要改变两个节点<code>next</code>的值且要对<code>NULL</code>指针做异常处理，势必会异常麻烦。嗯，第一次做这个题时我就是这么想的… 下面看看相对较好的思路。</p>
-<p>首先<code>dummy</code>节点还是必须要用到，除了<code>dummy</code>节点外还引入一个<code>curr</code>节点充当下一次合并时的头节点。在<code>l1</code>或者<code>l2</code>的某一个节点为空指针<code>NULL</code>时，退出<code>while</code>循环，并将非空链表的头部链接到<code>curr-&gt;next</code>中。</p>
-<h3 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h3>]]></content>
-      
-        <categories>
-            
-            <category> 刷题 </category>
-            
-            <category> 面试 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> C++ </tag>
-            
-            <tag> Python </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[LeetCode/LintCode刷题之线性表]]></title>
       <url>/2017/03/17/LeetCodeLintCode%E5%88%B7%E9%A2%98%E4%B9%8B%E7%BA%BF%E6%80%A7%E8%A1%A8/</url>
       <content type="html"><![CDATA[<p>#线性表</p>
@@ -91,6 +51,46 @@ A solution set is:
 <p>或：先排序，然后左右夹逼，复杂度 $O(n^2)$。<br>这个方法可以推广到 k-sum，先排序，然后敬 k − 2 次悟环，在偎内层悟环左右夹逼，肘间复杂 度是 $O(max{n log n, n^{k−1}})$。</p>
 <h3 id="C-2"><a href="#C-2" class="headerlink" title="C++"></a>C++</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
 ]]></content>
+      
+        <categories>
+            
+            <category> 刷题 </category>
+            
+            <category> 面试 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> Python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[LeetCode/LintCode刷题之排序]]></title>
+      <url>/2017/03/17/LeetCodeLintCode%E5%88%B7%E9%A2%98%E4%B9%8B%E6%8E%92%E5%BA%8F/</url>
+      <content type="html"><![CDATA[<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="Merge-Sorted-Array"><a href="#Merge-Sorted-Array" class="headerlink" title="Merge Sorted Array"></a>Merge Sorted Array</h2><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><ul>
+<li>leetcode: <a href="https://leetcode.com/problems/merge-sorted-array/" target="_blank" rel="external">Merge Sorted Array | LeetCode OJ</a></li>
+<li>lintcode: <a href="http://www.lintcode.com/en/problem/merge-sorted-array/" target="_blank" rel="external">(6) Merge Sorted Array</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Given two sorted integer arrays A and B, merge B into A as one sorted array.</div><div class="line"></div><div class="line">Example</div><div class="line">A = [1, 2, 3, empty, empty], B = [4, 5]</div><div class="line"></div><div class="line">After merge, A will be filled as [1, 2, 3, 4, 5]</div><div class="line"></div><div class="line">Note</div><div class="line">You may assume that A has enough space (size that is greater or equal to m + n)</div><div class="line">to hold additional elements from B.</div><div class="line">The number of elements initialized in A and B are m and n respectively.</div></pre></td></tr></table></figure>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>因为本题有 in-place 的限制，故必须从数组末尾的两个元素开始比较；否则就会产生挪动，一旦挪动就会是 $O(n^2)$ 的。<br>自尾部向首部逐个比较两个数组内的元素，取较大的置于数组 A 中。由于 A 的容量较 B 大，故最后 <code>m == 0</code> 或者 <code>n == 0</code> 时仅需处理 B 中的元素，因为 A 中的元素已经在 A 中，无需处理。</p>
+<h3 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; B, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> index = m + n - <span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span> (m &gt; <span class="number">0</span> &amp;&amp; n &gt; <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (A[m - <span class="number">1</span>] &gt; B[n - <span class="number">1</span>]) &#123;</div><div class="line">                A[index] = A[m - <span class="number">1</span>];</div><div class="line">                --m;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">            A[index] = B[n - <span class="number">1</span>];</div><div class="line">            --n;</div><div class="line">            &#125;</div><div class="line">        --index;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 如果B非空，因为A中的元素已经在A中，m==0时，A中元素位置已调整好，B中元素不定</span></div><div class="line">        <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</div><div class="line">            A[index] = B[n - <span class="number">1</span>];</div><div class="line">            --n;</div><div class="line">            --index;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>最坏情况下需要遍历两个数组中所有元素，时间复杂度为 $O(m+n)$. 空间复杂度 $O(1)$.</p>
+<h2 id="Merge-Two-Sorted-Lists"><a href="#Merge-Two-Sorted-Lists" class="headerlink" title="Merge Two Sorted Lists"></a>Merge Two Sorted Lists</h2><h2 id="Question-1"><a href="#Question-1" class="headerlink" title="Question"></a>Question</h2><ul>
+<li>leetcode: <a href="https://leetcode.com/problems/merge-two-sorted-lists/" target="_blank" rel="external">Merge Two Sorted Lists | LeetCode OJ</a></li>
+<li>lintcode: <a href="http://www.lintcode.com/en/problem/merge-two-sorted-lists/" target="_blank" rel="external">(165) Merge Two Sorted Lists</a></li>
+</ul>
+<h3 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h3><p>Merge two sorted (ascending) linked lists and return it as a new sorted list.<br>The new sorted list should be made by splicing together the nodes of the two<br>lists and sorted in ascending order.</p>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p>Given <code>1-&gt;3-&gt;8-&gt;11-&gt;15-&gt;null</code>, <code>2-&gt;null</code> , return <code>1-&gt;2-&gt;3-&gt;8-&gt;11-&gt;15-&gt;null</code>.</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>此题为两个链表的合并，合并后的表头节点不一定，故应联想到使用<code>dummy</code>节点。链表节点的插入主要涉及节点<code>next</code>指针值的改变，两个链表的合并操作则涉及到两个节点的<code>next</code>值变化，若每次合并一个节点都要改变两个节点<code>next</code>的值且要对<code>NULL</code>指针做异常处理，势必会异常麻烦。嗯，第一次做这个题时我就是这么想的… 下面看看相对较好的思路。</p>
+<p>首先<code>dummy</code>节点还是必须要用到，除了<code>dummy</code>节点外还引入一个<code>curr</code>节点充当下一次合并时的头节点。在<code>l1</code>或者<code>l2</code>的某一个节点为空指针<code>NULL</code>时，退出<code>while</code>循环，并将非空链表的头部链接到<code>curr-&gt;next</code>中。</p>
+<h3 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h3>]]></content>
       
         <categories>
             
