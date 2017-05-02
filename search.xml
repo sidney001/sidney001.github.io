@@ -112,6 +112,33 @@ A solution set is:
     </entry>
     
     <entry>
+      <title><![CDATA[leetcode每日一题:(6)ZigZag Conversion]]></title>
+      <url>/2017/03/17/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98(6)ZigZag%20Conversion/</url>
+      <content type="html"><![CDATA[<h2 id="ZigZag-Conversion"><a href="#ZigZag-Conversion" class="headerlink" title="ZigZag Conversion"></a>ZigZag Conversion</h2><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><ul>
+<li>leetcode: <a href="https://leetcode.com/problems/zigzag-conversion/" target="_blank" rel="external">ZigZag Conversion| LeetCode OJ</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">The string &quot;PAYPALISHIRING&quot; is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</div><div class="line"></div><div class="line">P   A   H   N</div><div class="line">A P L S I I G</div><div class="line">Y   I   R</div><div class="line">And then read line by line: &quot;PAHNAPLSIIGYIR&quot;</div><div class="line">Write the code that will take a string and make this conversion given a number of rows:</div><div class="line"></div><div class="line">string convert(string text, int nRows);</div><div class="line">convert(&quot;PAYPALISHIRING&quot;, 3) should return &quot;PAHNAPLSIIGYIR&quot;.</div></pre></td></tr></table></figure>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>可以发现首行和末行的重复周期都是 $2 <em> nRows - 2$，对于首行和末行之间的行，还会额外重复一次，重复的这一次距离本周期起始字符的距离是 $2 </em> nRows - 2 - 2 * i$ 。</p>
+<h3 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">convert</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> nRows)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (nRows &lt;= <span class="number">1</span> || s.length() == <span class="number">0</span>)  <span class="comment">//nRows=1 按下面会死循环</span></div><div class="line">           <span class="keyword">return</span> s;  </div><div class="line">        <span class="built_in">string</span> ret = <span class="string">""</span>;</div><div class="line">        <span class="keyword">const</span> <span class="keyword">int</span> len = s.size();</div><div class="line">        <span class="keyword">int</span> lag = <span class="number">2</span>*nRows - <span class="number">2</span>; <span class="comment">//循环周期  </span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nRows; i++) &#123;  </div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; len; j += lag) &#123;  </div><div class="line">                ret += s[j];    </div><div class="line">                <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; i &lt; nRows<span class="number">-1</span>) &#123;  <span class="comment">//非首行和末行时</span></div><div class="line">                    <span class="keyword">int</span> t = j + lag - <span class="number">2</span>*i;  </div><div class="line">                    <span class="keyword">if</span> (t &lt; len) &#123;  </div><div class="line">                        ret += s[t];  </div><div class="line">                    &#125;  </div><div class="line">                &#125;  </div><div class="line">            &#125;  </div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">return</span> ret;</div><div class="line">   </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>###提交成功<br><img src="http://upload-images.jianshu.io/upload_images/5831288-6ea88f77507d4e9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="提交成功"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> C++ </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Markdown语法]]></title>
       <url>/2016/11/17/Markdown%E8%AF%AD%E6%B3%95/</url>
       <content type="html"><![CDATA[<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><blockquote>
